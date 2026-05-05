@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+X = np.array([1,2,3,4,5,6,7,8,9,10])
+Y = np.array([2,4,5,4,5,7,8,9,10,12])
+w = 0
+b = 0
+learning_rate = 0.01
+iterations = 1000
+n = len(X)
+for i in range(iterations):
+    Y_pred = w * X + b
+    dw = (-2/n) * sum(X * (Y - Y_pred))
+    db = (-2/n) * sum(Y - Y_pred)
+    w = w - learning_rate * dw
+    b = b - learning_rate * db
+print("Weight :", w)
+print("Bias :", b)
+Y_pred = w * X + b
+plt.scatter(X, Y, marker='*', label="Actual Data")
+plt.plot(X, Y_pred, label="Regression Line")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.title("Linear Regression using Gradient Descent")
+plt.legend()
+plt.show()
